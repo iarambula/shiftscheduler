@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h2><%= @volunteer.full_name %></h2>
+      <% for attribute in @volunteer.attributes.keys %>
+        <p>
+          <strong><%= attribute.humanize %>:</strong> 
+          <%= @volunteer.attributes[attribute].to_s %>
+        </p>
+      <% end %>
+      <%= link_to 'Volunteers', volunteers_path %> |
+      <%= link_to 'Edit', edit_volunteer_path %>
+    </div>
+  </div>
+</div>

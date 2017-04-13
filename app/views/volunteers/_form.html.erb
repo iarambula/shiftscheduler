@@ -1,0 +1,44 @@
+<%= form_for volunteer do |f| %>
+  <% if volunteer.errors.any? %>
+    <div id="error_explanation">
+      <h4><%= pluralize(volunteer.errors.count, "error") %> prohibited this volunteer from being saved:</h4>
+      <ul>
+        <% volunteer.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :full_name %>
+    <%= f.text_field :full_name, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :group_id %>
+    <%= f.select(:group_id, Group.all.collect { |g| [ g.name, g.id ] }, { include_blank: true }, { class: "form-control" }) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :email %>
+    <%= f.email_field :email, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :home_number %>
+    <%= f.text_field :home_number, class: "form-control", data: { inputmask: "'mask':'(999)999-9999'" } %>
+  </div>
+  <div class="form-group">
+    <%= f.label :mobile_number %>
+    <%= f.text_field :mobile_number, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <label class="custom-control custom-checkbox">
+      <%= f.check_box :recieve_texts, class: "custom-control-input" %>
+      <input type="checkbox" class="custom-control-input">
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">Recieve Texts?</span>
+    </label>
+  </div>
+  <div class="form-group">
+    <%= f.submit class: "btn btn-success" %>
+  </div>
+<% end %>

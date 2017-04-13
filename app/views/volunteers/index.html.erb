@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h2>
+        Volunteers
+        <%= link_to 'New', new_volunteer_path, class: 'btn btn-md btn-success' %>
+      </h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Home Number</th>
+            <th>Mobile Number</th>
+            <th>Recieves Text</th>
+            <th>Email</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if @volunteers.present? %>
+            <% @volunteers.each do |v| %>
+              <tr>
+                <td><%= v.full_name %></td>
+                <td><%= v.home_number %></td>
+                <td><%= v.mobile_number %></td>
+                <td><%= v.recieve_texts %></td>
+                <td><%= v.email %></td>
+                <td>
+                  <%= link_to 'Show', volunteer_path(v) %>
+                  <%= link_to 'Edit', edit_volunteer_path(v) %>
+                  <%= link_to 'Destroy', volunteer_path(v), method: :delete, data: { confirm: "Are you sure??" } %>
+                </td>
+              </tr>
+            <% end %>
+          <% else %>
+            <tr>
+              <td colspan="5">
+                There are no volunteers to show. <%= link_to 'Add Volunteer', new_volunteer_path %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
