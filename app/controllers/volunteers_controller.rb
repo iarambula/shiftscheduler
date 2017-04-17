@@ -2,16 +2,17 @@ class VolunteersController < ApplicationController
   before_action :set_volunteer, except: [ :index, :new, :create ]
 
   def index
-    @volunteers = Volunteer.all
+    @q = Volunteer.includes(:group).ransack(params[:q])
+    @volunteers = @q.result()
   end
 
   def new
     @volunteer = Volunteer.new
+    @shifts = Shift.all
   end
 
   def create
     @volunteer = Volunteer.new(volunteer_attributes)
-
     if @volunteer.save
       redirect_to @volunteer, notice: 'Volunteer was successfully created.'
     else
@@ -29,13 +30,13 @@ class VolunteersController < ApplicationController
 
   def destroy
     @volunteer.destroy
-    redirect_to volunteers_url
+    redirect_to volunteers_path
   end
 
   private
 
   def volunteer_attributes
-    params.require(:volunteer).permit(:full_name, :group_id, :email, :home_number, :mobile_number, :recieve_texts)
+    params.require(:volunteer).permit(:full_name, :group_id, :email, :home_number, :mobile_number, :recieve_texts, :shift_ids => [])
   end
 
   def set_volunteer

@@ -1,0 +1,3 @@
+<% if @shift.valid? %>
+  $("<%= escape_javascript(render 'shift', shift: @shift) %>").appendTo("#shifts_list");
+<% end %>

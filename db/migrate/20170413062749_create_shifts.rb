@@ -1,9 +1,9 @@
 class CreateShifts < ActiveRecord::Migration[5.0]
   def change
     create_table :shifts do |t|
-      t.string :title
-      t.integer :starts_at
-      t.integer :ends_at
+      t.integer :day
+      t.datetime :starts_at
+      t.datetime :ends_at
 
       t.timestamps
     end

@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h2>
+        Groups
+        <%= link_to 'Add Group', new_group_path, class: 'btn btn-sm btn-success' %>
+      </h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if @groups.present? %>
+            <% @groups.each do |g| %>
+              <tr>
+                <td><%= g.name %></td>
+                <td>
+                  <%= link_to 'Show', group_path(g) %>
+                  <%= link_to 'Edit', edit_group_path(g) %>
+                  <%= link_to 'Destroy', group_path(g), method: :delete, data: { confirm: "Are you sure??" } %>
+                </td>
+              </tr>
+            <% end %>
+          <% else %>
+            <tr>
+              <td colspan="2">There are no groups to show. <%= link_to "Add Group", new_group_path %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

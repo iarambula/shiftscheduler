@@ -10,35 +10,64 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= f.label :full_name %>
-    <%= f.text_field :full_name, class: "form-control" %>
+  <div class="row">
+    <div class="col-6">
+      <div class="form-group">
+        <%= f.label :full_name %>
+        <%= f.text_field :full_name, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :additional %>
+        <%= f.text_area :additional, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :count %>
+        <%= f.number_field :count, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :group_id %>
+        <%= f.select(:group_id, Group.all.collect { |g| [ g.name, g.id ] }, { prompt: true }, { class: "form-control" }) %>
+      </div>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :home_number %>
+        <%= f.text_field :home_number, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :mobile_number %>
+        <%= f.text_field :mobile_number, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <label class="custom-control custom-checkbox">
+          <%= f.check_box :recieve_texts, class: "custom-control-input" %>
+          <input type="checkbox" class="custom-control-input">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">Recieve Texts?</span>
+        </label>
+      </div>
+    </div>
+    <div class="col-6">
+      <h4>Availability</h4>
+      <div class="form-group">
+        <a href="#" class="btn btn-sm btn-primary" id="clear_shifts">Clear</a>
+        <a href="#" class="btn btn-sm btn-primary" id="all_shifts">All</a>
+        <a href="#" class="btn btn-sm btn-primary" id="weekend_shifts">Weekends</a>
+        <a href="#" class="btn btn-sm btn-primary" id="weekday_shifts">Weekdays</a>
+      </div>
+      <%= f.collection_check_boxes :shift_ids, Shift.all, :id, :readable_shift do |s| %>
+        <div class="form-check">
+          <%= s.label class: 'form-check-label' do %>
+            <%= s.check_box class: "form-check-input shift", data: { day: s.object.day, starts_at: s.object.starts_at.iso8601, ends_at: s.object.ends_at.iso8601 } %>
+            <%= s.text %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
   <div class="form-group">
-    <%= f.label :group_id %>
-    <%= f.select(:group_id, Group.all.collect { |g| [ g.name, g.id ] }, { include_blank: true }, { class: "form-control" }) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :email %>
-    <%= f.email_field :email, class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :home_number %>
-    <%= f.text_field :home_number, class: "form-control", data: { inputmask: "'mask':'(999)999-9999'" } %>
-  </div>
-  <div class="form-group">
-    <%= f.label :mobile_number %>
-    <%= f.text_field :mobile_number, class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <label class="custom-control custom-checkbox">
-      <%= f.check_box :recieve_texts, class: "custom-control-input" %>
-      <input type="checkbox" class="custom-control-input">
-      <span class="custom-control-indicator"></span>
-      <span class="custom-control-description">Recieve Texts?</span>
-    </label>
-  </div>
-  <div class="form-group">
-    <%= f.submit class: "btn btn-success" %>
+    <%= f.submit class: "btn btn-primary" %>
   </div>
 <% end %>

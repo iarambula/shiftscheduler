@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h2>
+        Shifts
+        <%= link_to 'Add Shift', new_shift_path, class: 'btn btn-sm btn-success' %>
+      </h2>
+      <%= render 'form_inline', shift: Shift.new %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th>Starts at</th>
+            <th>Ends at</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="shifts_list">
+          <% if @shifts.present? %>
+            <% @shifts.each do |s| %>
+              <%= render 'shift', shift: s %>
+            <% end %>
+          <% else %>
+            <tr>
+              <td colspan="2">There are no shifts to show. <%= link_to "Add Shift", new_shift_path %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -8,8 +8,9 @@
           <%= @volunteer.attributes[attribute].to_s %>
         </p>
       <% end %>
-      <%= link_to 'Volunteers', volunteers_path %> |
-      <%= link_to 'Edit', edit_volunteer_path %>
+      <%= link_to 'Volunteers List', volunteers_path, class: 'btn btn-link' %>
+      <%= link_to 'Edit Volunteer', edit_volunteer_path, class: 'btn btn-link' %>
+      <%= link_to 'New Volunteer', new_volunteer_path, class: 'btn btn-link' %>
     </div>
   </div>
 </div>

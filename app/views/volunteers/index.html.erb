@@ -3,16 +3,14 @@
     <div class="col-12">
       <h2>
         Volunteers
-        <%= link_to 'New', new_volunteer_path, class: 'btn btn-md btn-success' %>
+        <%= link_to 'Add Volunteer', new_volunteer_path, class: 'btn btn-sm btn-success' %>
       </h2>
-      <table class="table">
+      <table class="table table-sm">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Home Number</th>
-            <th>Mobile Number</th>
-            <th>Recieves Text</th>
-            <th>Email</th>
+            <th><%= sort_link(@q, :full_name) %></th>
+            <th><%= sort_link(@q, :group_name) %></th>
+            <th><%= sort_link(@q, :mobile_number) %></th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -21,14 +19,12 @@
             <% @volunteers.each do |v| %>
               <tr>
                 <td><%= v.full_name %></td>
-                <td><%= v.home_number %></td>
+                <td><%= v.group&.name %></td>
                 <td><%= v.mobile_number %></td>
-                <td><%= v.recieve_texts %></td>
-                <td><%= v.email %></td>
                 <td>
-                  <%= link_to 'Show', volunteer_path(v) %>
-                  <%= link_to 'Edit', edit_volunteer_path(v) %>
-                  <%= link_to 'Destroy', volunteer_path(v), method: :delete, data: { confirm: "Are you sure??" } %>
+                  <%= link_to 'Show', volunteer_path(v), class: 'btn btn-sm btn-secondary' %>
+                  <%= link_to 'Edit', edit_volunteer_path(v), class: 'btn btn-sm btn-secondary' %>
+                  <%= link_to 'Destroy', volunteer_path(v), class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: "Are you sure??" } %>
                 </td>
               </tr>
             <% end %>

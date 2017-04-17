@@ -8,6 +8,10 @@ end
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
+  gem 'rails-assets-toastr'
+  gem 'rails-assets-moment'
+  gem 'rails-assets-fullcalendar'
+  gem 'rails-assets-jquery.inputmask'
 end
 
 gem 'rails', '~> 5.0.2'
@@ -20,6 +24,7 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'ransack'
 
 group :development, :test do
   gem 'byebug', platform: :mri

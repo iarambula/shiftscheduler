@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h2><%= @group.name %></h2>
+      <% for attribute in @group.attributes.keys %>
+        <p>
+          <strong><%= attribute.humanize %>:</strong> 
+          <%= @group.attributes[attribute].to_s %>
+        </p>
+      <% end %>
+      <%= link_to 'Groups', groups_path %> |
+      <%= link_to 'Edit', edit_group_path %>
+    </div>
+  </div>
+</div>
