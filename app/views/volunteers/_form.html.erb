@@ -40,12 +40,16 @@
         <%= f.label :mobile_number %>
         <%= f.text_field :mobile_number, class: "form-control" %>
       </div>
-      <div class="form-group">
-        <label class="custom-control custom-checkbox">
-          <%= f.check_box :recieve_texts, class: "custom-control-input" %>
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-          <span class="custom-control-description">Recieve Texts?</span>
+      <div class="form-check">
+        <label class="form-check-label">
+          <%= f.check_box :recieve_texts, class: "form-check-input" %>
+          Recieve Texts
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <%= f.check_box :key_person, class: "form-check-input" %>
+          Key Person
         </label>
       </div>
     </div>
