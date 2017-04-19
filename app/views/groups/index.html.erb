@@ -5,7 +5,7 @@
         Groups
         <%= link_to 'Add Group', new_group_path, class: 'btn btn-sm btn-success' %>
       </h2>
-      <table class="table">
+      <table class="table table-sm">
         <thead>
           <tr>
             <th>Name</th>
@@ -18,9 +18,9 @@
               <tr>
                 <td><%= g.name %></td>
                 <td>
-                  <%= link_to 'Show', group_path(g) %>
-                  <%= link_to 'Edit', edit_group_path(g) %>
-                  <%= link_to 'Destroy', group_path(g), method: :delete, data: { confirm: "Are you sure??" } %>
+                  <%= link_to 'Show', group_path(g), class: 'btn btn-sm btn-secondary' %>
+                  <%= link_to 'Edit', edit_group_path(g),  class: 'btn btn-sm btn-secondary' %>
+                  <%= link_to 'Destroy', group_path(g), method: :delete, data: { confirm: "Are you sure??" },  class: 'btn btn-sm btn-outline-danger' %>
                 </td>
               </tr>
             <% end %>

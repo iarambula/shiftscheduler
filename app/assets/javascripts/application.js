@@ -19,8 +19,5 @@
 //= require moment
 //= require fullcalendar
 //= require toastr
+//= require select2
 //= require_tree .
-
-$(document).on('turbolinks:load', function() {
-  $('#calendar').fullCalendar();
-});

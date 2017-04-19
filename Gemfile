@@ -12,6 +12,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-moment'
   gem 'rails-assets-fullcalendar'
   gem 'rails-assets-jquery.inputmask'
+  gem 'rails-assets-select2'
 end
 
 gem 'rails', '~> 5.0.2'

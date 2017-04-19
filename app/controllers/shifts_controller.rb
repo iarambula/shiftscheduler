@@ -2,7 +2,7 @@ class ShiftsController < ApplicationController
   before_action :set_shift, except: [ :index, :new, :create ]
 
   def index
-    @shifts = Shift.all
+    @shifts = Shift.all.order('day, starts_at')
   end
 
   def new

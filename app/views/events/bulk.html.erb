@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="col-12">
+    <h2>Generate Events</h2>
+    <%= form_tag events_bulk_create_path do %>
+      <div class="form-group">
+        <%= label :events, :starts_at %>
+        <div class="form-inline">
+          <%= date_select :events, :starts_at, {}, { class: "form-control mr-1" } %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= label :events, :ends_at %>
+        <div class="form-inline">
+          <%= date_select :events, :ends_at, {}, { class: "form-control mr-1" } %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= submit_tag "Generate Events", class: "btn btn-primary", data: { disable_with: "Generating Events..." } %>
+      </div>
+    <% end %>
+  </div>
+</div>

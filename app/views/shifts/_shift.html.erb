@@ -1,10 +1,10 @@
 <tr>
-  <td><%= shift.day %></td>
+  <td><%= shift.day.humanize %></td>
   <td><%= shift.starts_at.strftime "%I:%M %p" %></td>
   <td><%= shift.ends_at.strftime "%I:%M %p" %></td>
   <td>
-    <%= link_to 'Show', shift_path(shift) %>
-    <%= link_to 'Edit', edit_shift_path(shift) %>
-    <%= link_to 'Destroy', shift_path(shift), method: :delete, data: { confirm: "Are you sure??" } %>
+    <%= link_to 'Show', shift_path(shift), class: 'btn btn-sm btn-secondary' %>
+    <%= link_to 'Edit', edit_shift_path(shift), class: 'btn btn-sm btn-secondary' %>
+    <%= link_to 'Destroy', shift_path(shift), method: :delete, data: { confirm: "Are you sure??" }, class: 'btn btn-sm btn-outline-danger' %>
   </td>
 </tr>
