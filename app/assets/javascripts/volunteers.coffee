@@ -19,6 +19,8 @@ class Shift
 
 
 $(document).on 'turbolinks:load', ->
+  $('#volunteer_group_id').select2()
+
   $('#clear_shifts').click (e) ->
     $('.shift').prop('checked', false)
     e.preventDefault()

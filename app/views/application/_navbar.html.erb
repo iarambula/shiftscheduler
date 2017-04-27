@@ -1,9 +1,9 @@
 <nav class="navbar navbar-toggleable-md navbar-light bg-faded mb-4">
   <div class="container">
-    <%= link_to "Shift Scheduler", root_path, class: "navbar-brand" %>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <%= link_to "Watchmen", root_path, class: "navbar-brand" %>
+    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-    </button>
+    </button> -->
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
@@ -16,7 +16,9 @@
           <%= link_to "Events", events_path, class: "nav-link dropdown-toggle", data: { toggle: "dropdown" } %>
           <div class="dropdown-menu">
             <%= link_to "All Events", events_path, class: "dropdown-item" %>
+            <%= link_to "New Event", new_event_path, class: "dropdown-item" %>
             <%= link_to "Generate Events", events_bulk_path, class: "dropdown-item" %>
+            <%= link_to "Export CSV", events_path(format: 'csv'), class: "dropdown-item", data: { disable_with: "Exporting..." } %>
           </div>
         </li>
         <li class="nav-item dropdown">

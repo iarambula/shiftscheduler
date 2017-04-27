@@ -1,13 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h2>Shift</h2>
-      <% for attribute in @shift.attributes.keys %>
-        <p>
-          <strong><%= attribute.humanize %>:</strong> 
-          <%= @shift.attributes[attribute].to_s %>
-        </p>
-      <% end %>
+      <h2>
+        <%= @shift.day.humanize %>
+        <%= @shift.starts_at.strftime '%I:%M %p' %> -
+        <%= @shift.ends_at.strftime '%I:%M %p' %>    
+      </h2>
+      <%= render 'volunteers/list', volunteers: @volunteers, q: @q %>
       <%= link_to 'Shifts', shifts_path %> |
       <%= link_to 'Edit', edit_shift_path %>
     </div>

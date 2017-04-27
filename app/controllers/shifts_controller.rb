@@ -2,11 +2,21 @@ class ShiftsController < ApplicationController
   before_action :set_shift, except: [ :index, :new, :create ]
 
   def index
-    @shifts = Shift.all.order('day, starts_at')
+    if params[:date].present?
+      day = Date.parse(params[:date]).strftime('%A').parameterize
+      @shifts = Shift.where(day: day)
+    else
+      @shifts = Shift.all
+    end
   end
 
   def new
     @shift = Shift.new
+  end
+
+  def show
+    @q = @shift.volunteers.includes(:group).ransack(params[:q])
+    @volunteers = @q.result()
   end
 
   def create

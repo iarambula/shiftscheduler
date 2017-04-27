@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <p class="lead">Schedule for <%= @group.name %></p>
+
+      <% @events.group_by(&:starts_at).each do |shift_id, events| %>
+        <div>
+          <strong>
+            <%= events.first.starts_at.strftime "%D %I:%M %p" %> to
+            <%= events.first.ends_at.strftime "%I:%M %p" %>
+          </strong>
+          <% events.each do |e| %>
+            <div><%= e.volunteer.full_name %></div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

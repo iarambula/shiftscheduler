@@ -25,6 +25,10 @@
         <%= f.number_field :count, class: "form-control" %>
       </div>
       <div class="form-group">
+        <%= f.label :notes %>
+        <%= f.text_area :notes, class: "form-control" %>
+      </div>
+      <div class="form-group">
         <%= f.label :group_id %>
         <%= f.select(:group_id, Group.all.collect { |g| [ g.name, g.id ] }, { prompt: true }, { class: "form-control" }) %>
       </div>

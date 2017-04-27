@@ -36,7 +36,7 @@ class VolunteersController < ApplicationController
   private
 
   def volunteer_attributes
-    params.require(:volunteer).permit(:full_name, :additional, :count, :group_id, :email, :home_number, :mobile_number, :recieve_texts, :key_person, :shift_ids => [])
+    params.require(:volunteer).permit(:full_name, :notes, :additional, :count, :group_id, :email, :home_number, :mobile_number, :recieve_texts, :key_person, :shift_ids => [])
   end
 
   def set_volunteer

@@ -5,38 +5,7 @@
         Volunteers
         <%= link_to 'Add Volunteer', new_volunteer_path, class: 'btn btn-sm btn-success' %>
       </h2>
-      <table class="table table-sm">
-        <thead>
-          <tr>
-            <th><%= sort_link(@q, :full_name) %></th>
-            <th><%= sort_link(@q, :group_name) %></th>
-            <th><%= sort_link(@q, :mobile_number) %></th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% if @volunteers.present? %>
-            <% @volunteers.each do |v| %>
-              <tr>
-                <td><%= v.full_name %></td>
-                <td><%= v.group&.name %></td>
-                <td><%= v.mobile_number %></td>
-                <td>
-                  <%= link_to 'Show', volunteer_path(v), class: 'btn btn-sm btn-secondary' %>
-                  <%= link_to 'Edit', edit_volunteer_path(v), class: 'btn btn-sm btn-secondary' %>
-                  <%= link_to 'Destroy', volunteer_path(v), class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: "Are you sure??" } %>
-                </td>
-              </tr>
-            <% end %>
-          <% else %>
-            <tr>
-              <td colspan="5">
-                There are no volunteers to show. <%= link_to 'Add Volunteer', new_volunteer_path %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+      <%= render 'list', volunteers: @volunteers, q: @q %>
     </div>
   </div>
 </div>

@@ -2,12 +2,16 @@
   <div class="row">
     <div class="col-12">
       <h2><%= @event.volunteer.full_name %></h2>
+      <%= link_to "Confirm", event_confirm_path(@event), method: :post, class: "btn btn-success" %>
+      <%= link_to "Unconfirm", event_confirm_path(@event), method: :post, class: "btn btn-outline-danger" %>
+
       <% for attribute in @event.attributes.keys %>
         <p>
           <strong><%= attribute.humanize %>:</strong> 
           <%= @event.attributes[attribute].to_s %>
         </p>
       <% end %>
+      <%= link_to 'Destroy', event_path, method: :delete, class: 'btn btn-outline-danger', data: { confirm: 'Are you sure???' } %>
       <%= link_to 'Event List', events_path, class: 'btn btn-link' %>
       <%= link_to 'Edit Event', edit_event_path, class: 'btn btn-link' %>
       <%= link_to 'New Event', new_event_path, class: 'btn btn-link' %>

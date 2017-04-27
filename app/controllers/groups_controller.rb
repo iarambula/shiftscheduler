@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :set_group, except: [ :index, :new, :create ]
+  before_action :set_group, except: [ :index, :new, :create, :events ]
 
   def index
     @groups = Group.all
@@ -7,6 +7,16 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
+  end
+
+  def show
+    @q = @group.volunteers.ransack(params[:q])
+    @volunteers = @q.result()
+  end
+
+  def events
+    @group = Group.find(params[:group_id])
+    @events = @group.events.where('starts_at > ?', DateTime.current)
   end
 
   def create

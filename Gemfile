@@ -13,6 +13,8 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-fullcalendar'
   gem 'rails-assets-jquery.inputmask'
   gem 'rails-assets-select2'
+  gem 'rails-assets-bootstrap-datepicker'
+  gem 'rails-assets-uri.js'
 end
 
 gem 'rails', '~> 5.0.2'

@@ -20,4 +20,6 @@
 //= require fullcalendar
 //= require toastr
 //= require select2
+//= require bootstrap-datepicker
+//= require uri.js.js
 //= require_tree .

@@ -9,6 +9,7 @@
         <thead>
           <tr>
             <th>Name</th>
+            <th>Schedule</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -16,7 +17,10 @@
           <% if @groups.present? %>
             <% @groups.each do |g| %>
               <tr>
-                <td><%= g.name %></td>
+                <td><%= link_to g.name, group_path(g) %></td>
+                <td>
+                  <%= link_to 'Schedule', group_events_path(g), class: 'btn btn-sm btn-secondary' %>
+                </td>
                 <td>
                   <%= link_to 'Show', group_path(g), class: 'btn btn-sm btn-secondary' %>
                   <%= link_to 'Edit', edit_group_path(g),  class: 'btn btn-sm btn-secondary' %>
