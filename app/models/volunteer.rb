@@ -14,6 +14,6 @@ class Volunteer < ApplicationRecord
   end
 
   def description
-    "#{full_name} #{mobile_number} #{group.name}"
+    "#{full_name} #{mobile_number} #{group&.name}"
   end
 end

@@ -5,6 +5,8 @@ class Event < ApplicationRecord
   belongs_to :shift
   before_save :populate_datetime_fields
 
+  enum status: [ :unconfirmed, :confirmed ]
+
   def self.to_csv
     attributes = ["Subject", "Start Date", "Start Time", "End Date", "End Time", "All Day Event", "Description", "Location", "Private"]
 
@@ -25,6 +27,10 @@ class Event < ApplicationRecord
         ]
       end
     end
+  end
+
+  def related
+    Event.where.not(volunteer: self.volunteer).where(starts_at: self.starts_at).where(ends_at: self.ends_at)
   end
 
   private

@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   def index
     respond_to do |format|
-      format.json { @events = Event.includes(:volunteer).where('ends_at > ? AND starts_at < ?', params[:start], params[:end]) }
+      format.json { @events = Event.includes(volunteer: :group).where('ends_at > ? AND starts_at < ?', params[:start], params[:end]) }
       format.csv { send_data Event.to_csv, filename: "events-#{Date.current}.csv" }
       format.html {}
     end
@@ -17,6 +17,17 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
+  end
+
+  def list
+    event_start_dates = Event.all.pluck(:starts_at)
+    @events = Event.includes(volunteer: :group).where(starts_at: event_start_dates).where('starts_at > ?', DateTime.current).order('volunteers.full_name').order(:starts_at)
+  end
+
+  def status
+    event = Event.find(params[:event_id])
+    event.update(status: params[:status])
+    redirect_to event
   end
 
   def bulk_create
@@ -83,7 +94,7 @@ class EventsController < ApplicationController
   end
 
   def event_attributes
-    params.require(:event).permit(:volunteer_id, :shift_date, :shift_id)
+    params.require(:event).permit(:volunteer_id, :shift_date, :shift_id, :status)
   end
 
   def shift_volunteers(s)

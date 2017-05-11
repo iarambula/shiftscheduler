@@ -3,4 +3,5 @@ json.array! @events do |event|
   json.start event.starts_at
   json.end event.ends_at
   json.url event_path event
+  json.description event.volunteer.description
 end

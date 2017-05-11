@@ -4,3 +4,6 @@
 @import "select2";
 @import "bootstrap-datepicker";
 @import "events";
+
+.badge-unconfirmed { @include badge-variant($badge-warning-bg); }
+.badge-confirmed { @include badge-variant($badge-success-bg); }

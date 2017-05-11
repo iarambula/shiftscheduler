@@ -16,7 +16,8 @@ class GroupsController < ApplicationController
 
   def events
     @group = Group.find(params[:group_id])
-    @events = @group.events.where('starts_at > ?', DateTime.current)
+    event_start_dates = @group.events.pluck(:starts_at)
+    @events = Event.where(starts_at: event_start_dates).where('events.starts_at > ?', DateTime.current)
   end
 
   def create

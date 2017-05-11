@@ -12,10 +12,7 @@ $(document).on 'turbolinks:load', ->
     todayHighlight: true
   )
 
-  $('#event_volunteer_id.select2, #event_shift_id.select2').select2(
-    allowClear: true
-    todayHighlight: true
-  )
+  $('#event_volunteer_id.select2, #event_shift_id.select2, #event_status.select2').select2()
 
   $('#event_shift_date').datepicker(
     format: 'yyyy-mm-dd'

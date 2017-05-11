@@ -3,17 +3,35 @@
     <div class="col-12">
       <p class="lead">Schedule for <%= @group.name %></p>
 
-      <% @events.group_by(&:starts_at).each do |shift_id, events| %>
-        <div>
-          <strong>
-            <%= events.first.starts_at.strftime "%D %I:%M %p" %> to
-            <%= events.first.ends_at.strftime "%I:%M %p" %>
-          </strong>
-          <% events.each do |e| %>
-            <div><%= e.volunteer.full_name %></div>
+      <table class="table table-bordered table-sm">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Watchmen</th>
+            <th width="200">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @events.group_by(&:starts_at).each do |starts_at, events| %>
+            <tr>
+              <td>
+                <%= events.first.starts_at.strftime "%D %I:%M %p" %> to
+                <%= events.first.ends_at.strftime "%I:%M %p" %>
+              </td>
+              <td>
+                <% events.each do |e| %>
+                  <div>
+                    <%= e.volunteer.names_list.join(', ') %>
+                    (<%= e.volunteer.group.name %>)
+                    <%= e.volunteer.mobile_number %>
+                  </div>
+                <% end %>
+              </td>
+              <td></td>
+            </tr>
           <% end %>
-        </div>
-      <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

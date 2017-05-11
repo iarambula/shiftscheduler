@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <p class="lead">Schedule</p>
+
+      <table class="table table-bordered table-sm">
+        <thead>
+          <tr>
+            <th>Watchman</th>
+            <th>Dates</th>
+            <th width="200">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @events.group_by(&:volunteer).each do |volunteer, events| %>
+            <tr>
+              <td>
+                <u><%= volunteer.group.name %></u><br>
+                <%= volunteer.names_list.join("<br>").html_safe %><br>
+                <i><%= volunteer.mobile_number %></i>
+              </td>
+              <td>
+                <% events.each do |e| %>
+                  <div>
+                    <%= e.starts_at.strftime "%D %I:%M %p" %> to
+                    <%= e.ends_at.strftime "%I:%M %p" %>
+                    <%= "with #{e.related.map { |e| e.volunteer.names_list }.flatten.join(", ")}" if e.related.present? %>
+                  </div>
+                <% end %>
+              </td>
+              <td></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

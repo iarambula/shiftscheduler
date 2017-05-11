@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   end
   get 'events/bulk', to: 'events#bulk'
   post 'events/bulk_create', to: 'events#bulk_create'
+  get 'events/list', to: 'events#list'
   resources 'events' do
-    post 'confirm'
+    post 'status'
   end
   resources 'shifts'
 end
